@@ -4,55 +4,55 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  /* 不需要进行平铺居中 */
-  background: url('/assets/images/login_bg.jpg') no-repeat center;
-  /* 铺面整个区域显示不完整 */
+  /* 登录大背景图不需要进行平铺 */
+  background: url('./assets/images/login_bg.jpg') no-repeat center;
   background: url('../images/login_bg.jpg') no-repeat center;
+   /* 铺面整个区域但显示不完整 */
   background-size: cover;
 }
 
+/* 登录注册区域 */
 .loginAndRegBox {
   width: 400px;
   height: 310px;
   background-color: #fff;
+/* 绝对定位左上角0,0 */
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
+/* 登录注册区域=>标题，不平铺居中 */
 .title-box {
   height: 60px;
-  background: url('/assets/images/login_title.png') no-repeat center;
+  background: url('../images/login_title.png') no-repeat center;
 }
-
+/* 注册的div默认隐藏*/
 .reg-box {
   display: none;
 }
-
+/* 登录的表单 */
 .layui-form {
   padding: 0 30px;
 }
-
 .links {
   display: flex;
+  /* 终点开始依次排序 */
   justify-content: flex-end;
 }
-
 .links a {
   font-size: 12px;
 }
-
+/* 图标子绝父相 */
 .layui-form-item {
   position: relative;
 }
-
 .layui-icon {
   position: absolute;
   left: 10px;
   top: 10px;
 }
-
+/* 图标和输入框里文字重叠问题 */
 .layui-input {
   padding-left: 32px;
 }
