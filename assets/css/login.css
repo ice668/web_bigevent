@@ -4,9 +4,13 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+<<<<<<< HEAD
   /* 不需要进行平铺居中 */
   background: url('/assets/images/login_bg.jpg') no-repeat center;
   /* 铺面整个区域显示不完整 */
+=======
+  background: url('../images/login_bg.jpg') no-repeat center;
+>>>>>>> login
   background-size: cover;
 }
 
