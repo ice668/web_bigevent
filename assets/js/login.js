@@ -68,7 +68,8 @@ $(function() {
         // 将登录成功得到的 token 字符串，保存到 localStorage 中
         localStorage.setItem('token键key', res.token)
         // 跳转到后台主页,当前页面打开URL页面
-        location.href = '/index.html'
+        location.href = '../../index.html'
+        
       }
     })
   })
