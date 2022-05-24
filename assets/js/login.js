@@ -1,19 +1,20 @@
 $(function() {
+
   // 点击“去注册账号”的链接
   $('#link_reg').on('click', function() {
     $('.login-box').hide()
     $('.reg-box').show()
   })
-
   // 点击“去登录”的链接
   $('#link_login').on('click', function() {
     $('.login-box').show()
     $('.reg-box').hide()
   })
 
-  // 从 layui 中获取 form 对象
+  // 从 layui 中获取 form 对象，内置弹层组件layer
   var form = layui.form
   var layer = layui.layer
+
   // 通过 form.verify() 函数自定义校验规则
   form.verify({
     // 自定义了一个叫做 pwd 校验规则
@@ -24,6 +25,7 @@ $(function() {
       // 还需要拿到密码框中的内容
       // 然后进行一次等于的判断
       // 如果判断失败,则return一个提示消息即可
+      //找到父节点通过属性来查找
       var pwd = $('.reg-box [name=password]').val()
       if (pwd !== value) {
         return '两次密码不一致！'
@@ -35,7 +37,7 @@ $(function() {
   $('#form_reg').on('submit', function(e) {
     // 1. 阻止默认的提交行为
     e.preventDefault()
-    // 2. 发起Ajax的POST请求
+    // 2. 发起Ajax的POST请求,jq选择器父元素
     var data = {
       username: $('#form_reg [name=username]').val(),
       password: $('#form_reg [name=password]').val()
@@ -49,7 +51,6 @@ $(function() {
       $('#link_login').click()
     })
   })
-
   // 监听登录表单的提交事件
   $('#form_login').submit(function(e) {
     // 阻止默认提交行为
@@ -57,7 +58,7 @@ $(function() {
     $.ajax({
       url: '/api/login',
       method: 'POST',
-      // 快速获取表单中的数据
+      // 快速获取表单中的数据,this当前表单对象form_login
       data: $(this).serialize(),
       success: function(res) {
         if (res.status !== 0) {
@@ -65,10 +66,12 @@ $(function() {
         }
         layer.msg('登录成功！')
         // 将登录成功得到的 token 字符串，保存到 localStorage 中
-        localStorage.setItem('token', res.token)
-        // 跳转到后台主页
+        localStorage.setItem('token键key', res.token)
+        // 跳转到后台主页,当前页面打开URL页面
         location.href = '/index.html'
       }
     })
   })
+
+
 })
