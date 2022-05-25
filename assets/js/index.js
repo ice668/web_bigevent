@@ -1,34 +1,33 @@
 $(function() {
 
   //JS 
-layui.use(['element', 'layer', 'util'], function(){
-  var element = layui.element
-  ,layer = layui.layer
-  ,util = layui.util
-  ,$ = layui.$;
-  
-  //头部事件
-  util.event('lay-header-event', {
-    //左侧菜单事件
-    menuLeft: function(othis){
-      layer.msg('展开左侧菜单的操作', {icon: 0});
-    }
-    ,menuRight: function(){
-      layer.open({
-        type: 1
-        ,content: '<div style="padding: 15px;">处理右侧面板的操作</div>'
-        ,area: ['260px', '100%']
-        ,offset: 'rt' //右上角
-        ,anim: 5
-        ,shadeClose: true
-      });
-    }
+  layui.use(['element', 'layer', 'util'], function(){
+    var element = layui.element
+    ,layer = layui.layer
+    ,util = layui.util
+    ,$ = layui.$;
+    
+    //头部事件
+    util.event('lay-header-event', {
+      //左侧菜单事件
+      menuLeft: function(othis){
+        layer.msg('展开左侧菜单的操作', {icon: 0});
+      }
+      ,menuRight: function(){
+        layer.open({
+          type: 1
+          ,content: '<div style="padding: 15px;">处理右侧面板的操作</div>'
+          ,area: ['260px', '100%']
+          ,offset: 'rt' //右上角
+          ,anim: 5
+          ,shadeClose: true
+        });
+      }
+    });
   });
-  
-});
 
   // 调用 getUserInfo 获取用户基本信息
-  getUserInfo()
+  getUserInfo() 
 
   var layer = layui.layer
 
@@ -38,12 +37,12 @@ layui.use(['element', 'layer', 'util'], function(){
     layer.confirm('确定退出登录?', { icon: 3, title: '提示' }, function(index) {
       //do something
       // 1. 清空本地存储中的 token
-      localStorage.removeItem('token')
+      localStorage.removeItem('tokenkey')
       // 2. 重新跳转到登录页面
-      location.href = '/login.html'
+      location.href = '/大事件项目课程资料/day3（7-11小节）/code/login.html'
 
       // 关闭 confirm 询问框
-      layer.close(index)
+     //layer.close(index)
     })
   })
 })
@@ -53,11 +52,15 @@ function getUserInfo() {
   $.ajax({
     method: 'GET',
     url: '/my/userinfo',
+    // headers:{
+    //   Authorization:localStorage.getItem('tokenkey') || ''
+    // },
     success: function(res) {
       if (res.status !== 0) {
         return layui.layer.msg('获取用户信息失败！')
       }
       // 调用 renderAvatar 渲染用户的头像
+      console.log(res.data)
       renderAvatar(res.data)
     }
     // 不论成功还是失败，最终都会调用 complete 回调函数
