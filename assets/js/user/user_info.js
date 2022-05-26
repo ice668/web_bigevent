@@ -44,8 +44,8 @@ $(function() {
       method: 'POST',
       url: '/my/userinfo',
       data: $(this).serialize(),
-      success: function(res) {
-        if (res.status !== 0) {
+      success: function(resss) {
+        if (resss.status !== 0) {
           return layer.msg('更新用户信息失败！')
         }
         layer.msg('更新用户信息成功！')
@@ -54,4 +54,5 @@ $(function() {
       }
     })
   })
+  
 })
