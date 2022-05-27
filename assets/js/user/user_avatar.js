@@ -19,7 +19,7 @@ $(function() {
     $('#file').click()
   })
 
-  // 为文件选择框绑定 change 事件
+  // 为文件选择框绑定 change 事件,选择的文件发生变化
   $('#file').on('change', function(e) {
     // 获取用户选择的文件
     var filelist = e.target.files
