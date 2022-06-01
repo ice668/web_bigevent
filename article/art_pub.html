@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css" />
-    <link rel="stylesheet" href="/assets/lib/cropper/cropper.css" />
-    <link rel="stylesheet" href="/assets/css/article/art_pub.css" />
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css" />
+
+    <link rel="stylesheet" href="../node_modules/cropper/dist/cropper.css">
+
+    <link rel="stylesheet" href="../assets/css/article/art_pub.css" />
   </head>
   <body>
     <!-- 卡片区域 -->
@@ -47,16 +49,16 @@
             <div class="layui-input-block cover-box">
               <!-- 左侧裁剪区域 -->
               <div class="cover-left">
-                <img id="image" src="/assets/images/sample2.jpg" alt="" />
+                <img id="image" src="../assets/images/sample2.jpg" alt="" />
               </div>
               <!-- 右侧预览区域和选择封面区域 -->
               <div class="cover-right">
                 <!-- 预览的区域 -->
                 <div class="img-preview"></div>
                 <!-- 选择封面按钮 -->
-                <button type="button" class="layui-btn layui-btn-danger" id="btnChooseImage">选择封面</button>
+                <button type="button" class="layui-btn layui-btn-danger" id="btnChooseImages">选择封面</button>
                 <!-- 隐藏的文件选择框 -->
-                <input type="file" id="coverFile" style="display: none;" accept="image/png,image/jpeg,image/gif" />
+                <input type="file" id="coverFile" accept="image/png,image/jpeg" />
               </div>
             </div>
           </div>
@@ -79,19 +81,29 @@
       {{/each}}
     </script>
 
-    <!-- 导入第三方的 JS 插件 -->
-    <script src="/assets/lib/layui/layui.all.js"></script>
-    <script src="/assets/lib/jquery.js"></script>
-    <script src="/assets/js/baseAPI.js"></script>
-    <!-- 导入 art-template -->
-    <script src="/assets/lib/template-web.js"></script>
+    <script src="https://www.layuicdn.com/layui/layui.js"></script>
+    
+    <!-- 导入 jQuery -->
+    <!-- <script src="/assets/lib/jquery.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <!-- 导入自己封装的 baseAPI -->
+    <script src="../assets/js/baseAPI.js"></script>
+
+    <script src="../assets/lib/template-web.js"></script>
+
+    <!-- 导入自己的 js 文件 -->
+    <script src="../assets/js/article/art_pub.js"></script>
+
     <!-- 富文本 -->
-    <script src="/assets/lib/tinymce/tinymce.min.js"></script>
-    <script src="/assets/lib/tinymce/tinymce_setup.js"></script>
+    <script src="../assets/lib/tinymce/tinymce.min.js"></script>
+    <script src="../assets/lib/tinymce/tinymce_setup.js"></script>
+    <!-- <script src="../node_modules/tinymce/tinymce.js"></script> -->
     <!-- 导入 cropper 相关的脚本 -->
-    <script src="/assets/lib/cropper/Cropper.js"></script>
-    <script src="/assets/lib/cropper/jquery-cropper.js"></script>
+    <!-- <script src="/assets/lib/cropper/Cropper.js"></script>
+    <script src="/assets/lib/cropper/jquery-cropper.js"></script> -->
+    <script src="../node_modules/cropper/dist/cropper.js"></script>
     <!-- 导入自己的 JS -->
-    <script src="/assets/js/article/art_pub.js"></script>
+    <script src="../assets/js/article/art_pub.js"></script>
   </body>
 </html>

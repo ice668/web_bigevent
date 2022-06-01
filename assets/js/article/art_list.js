@@ -27,7 +27,7 @@ $(function() {
   // 需要将请求参数对象提交到服务器
   var q = {
     pagenum: 1, // 页码值，默认请求第一页的数据
-    pagesize: 2, // 每页显示几条数据，默认每页显示2条
+    pagesize: 5, // 每页显示几条数据，默认每页显示2条
     cate_id: '', // 文章分类的 Id
     state: '' // 文章的发布状态
   }
@@ -45,10 +45,11 @@ $(function() {
         if (res.status !== 0) {
           return layer.msg('获取文章列表失败！')
         }
+        console.log(res)
         // 使用模板引擎渲染页面的数据
         var htmlStr = template('tpl-table', res)
         $('tbody').html(htmlStr)
-        // 调用渲染分页的方法
+        // // 调用渲染分页的方法
         renderPage(res.total)
       }
     })
@@ -94,7 +95,7 @@ $(function() {
       limit: q.pagesize, // 每页显示几条数据
       curr: q.pagenum, // 设置默认被选中的分页
       layout: ['count', 'limit', 'prev', 'page', 'next', 'skip'],
-      limits: [2, 3, 5, 10],
+      limits: [5, 10],
       // 分页发生切换的时候，触发 jump 回调
       // 触发 jump 回调的方式有两种：
       // 1. 点击页码的时候，会触发 jump 回调
@@ -103,8 +104,8 @@ $(function() {
         // 可以通过 first 的值，来判断是通过哪种方式，触发的 jump 回调
         // 如果 first 的值为 true，证明是方式2触发的
         // 否则就是方式1触发的
-        console.log(first)
-        console.log(obj.curr)
+        //console.log(first)
+        //console.log(obj.curr)
         // 把最新的页码值，赋值到 q 这个查询参数对象中
         q.pagenum = obj.curr
         // 把最新的条目数，赋值到 q 这个查询参数对象的 pagesize 属性中
@@ -122,7 +123,7 @@ $(function() {
   $('tbody').on('click', '.btn-delete', function() {
     // 获取删除按钮的个数
     var len = $('.btn-delete').length
-    console.log(len)
+    // console.log(len)
     // 获取到文章的 id
     var id = $(this).attr('data-id')
     // 询问用户是否要删除数据
